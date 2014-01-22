@@ -10,7 +10,7 @@ GRAMMAR_URL = "file://%(url)s"
 
 # GRAMMAR_DIR = os.path.join(ROOT, 'grammars')
 
-USAGE = "Usage: %(prog)s grammar-file sentence"
+USAGE = "Usage: %(prog)s grammar-file sentence trace cache"
 
 def get_parser(grammar_file, trace=2, cache=False):
     """ loads a parser from the given grammar """
