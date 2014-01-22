@@ -1,0 +1,40 @@
+% start S
+
+# Grammar Productions #
+#######################
+
+# standard production #
+
+S -> NP VP
+
+# noun phrase productions #
+
+NP -> PropN
+NP -> Det Nom
+Nom -> AP N
+Nom -> N
+
+# adjective phrase productions #
+
+AP -> A
+AP -> A AP
+
+# verb phrase productions #
+
+VP -> IV
+VP -> TV NP
+
+# Lexical Productions #
+#######################
+
+PropN -> 'Brad' | 'Angela'
+
+Det -> 'the' | 'this' | 'every' | 'these' | 'all' | 'some' | 'all' | 'several'
+
+A -> 'big' | 'small' | 'red' | 'young' | 'fast'
+
+N -> 'car' | 'dog' | 'house'
+
+IV -> 'falls' | 'walks' | 'drives' | 'enters' | 'buys'
+
+TV -> 'falls' | 'walks' | 'drives' | 'enters' | 'buys'
