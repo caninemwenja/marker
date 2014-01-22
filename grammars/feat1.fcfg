@@ -21,8 +21,11 @@ AP -> A AP
 
 # verb phrase productions #
 
-VP -> IV
-VP -> TV NP
+# SUBCAT1 = Intransitive Verbs
+# SUBCAT2 = Transitive Verbs
+
+VP[SUBCAT=?s] -> V[SUBCAT=1]
+VP[SUBCAT=?s] -> V[SUBCAT=2] NP
 
 # Lexical Productions #
 #######################
@@ -35,6 +38,6 @@ A -> 'big' | 'small' | 'red' | 'young' | 'fast'
 
 N -> 'car' | 'dog' | 'house'
 
-IV -> 'falls' | 'walks' | 'drives' | 'enters' | 'buys'
+V[SUBCAT=1] -> 'falls' | 'walks' | 'drives' | 'enters' | 'buys'
 
-TV -> 'falls' | 'walks' | 'drives' | 'enters' | 'buys'
+V[SUBCAT=2] -> 'falls' | 'walks' | 'drives' | 'enters' | 'buys'
