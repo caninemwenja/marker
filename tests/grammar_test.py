@@ -3,14 +3,24 @@ import nose
 from parser_tool import get_parser, parse
 
 sentences = (
-    # N[s] V[i]
+    # PN V[i]
     "Brad drives",
-    # N[s] V[t] N[p]
+    # PN V[t] N[p]
     "Angela drives cars",
-    # N[s] V[t] Det N[s]
+    # PN V[t] Det N[s]
     "Brad buys the house",
     # Det[s] N[s] V[i]
-    "a dog walks"
+    "a dog walks",
+    # Det[p] N[p] V[i]
+    "these dogs walk",
+    # Det[p] N[p] V[t] Det N[s]
+    "the cars enter the house",
+    # A N[p] V[t] Det N[s]
+    "red cars enter the house",
+    # Det A N[s] V[t] Det N[s]
+    "a red car enters the house",
+    # PN V[t] Det A N[s]
+    "Brad buys a red car",
 )
 
 grammar = get_parser("grammars/feat1.fcfg", trace=0)
