@@ -11,6 +11,7 @@ S[NUM=?n] -> NP[NUM=?n] VP[NUM=?n]
 
 NP[NUM=?n] -> PropN[NUM=?n]
 NP[NUM=?n] -> Det[NUM=?n] Nom[NUM=?n]
+NP[NUM=?n] -> Nom[NUM=?n]
 Nom[NUM=?n] -> AP N[NUM=?n]
 Nom[NUM=?n] -> N[NUM=?n]
 
