@@ -5,14 +5,14 @@
 
 # standard production #
 
-S -> NP VP
+S[NUM=?n] -> NP[NUM=?n] VP[NUM=?n]
 
 # noun phrase productions #
 
-NP -> PropN
-NP -> Det Nom
-Nom -> AP N
-Nom -> N
+NP[NUM=?n] -> PropN[NUM=?n]
+NP[NUM=?n] -> Det[NUM=?n] Nom[NUM=?n]
+Nom[NUM=?n] -> AP N[NUM=?n]
+Nom[NUM=?n] -> N[NUM=?n]
 
 # adjective phrase productions #
 
@@ -24,20 +24,28 @@ AP -> A AP
 # SUBCAT1 = Intransitive Verbs
 # SUBCAT2 = Transitive Verbs
 
-VP[SUBCAT=?s] -> V[SUBCAT=1]
-VP[SUBCAT=?s] -> V[SUBCAT=2] NP
+VP[NUM=?n,SUBCAT=?s] -> V[NUM=?n,SUBCAT=1]
+VP[NUM=?n,SUBCAT=?s] -> V[NUM=?n,SUBCAT=2] NP
 
 # Lexical Productions #
 #######################
 
-PropN -> 'Brad' | 'Angela'
+# NUM=sg -> singular
+# NUM=pl -> plural
 
-Det -> 'the' | 'this' | 'every' | 'these' | 'all' | 'some' | 'all' | 'several'
+PropN[NUM=sg] -> 'Brad' | 'Angela'
+
+Det[NUM=sg] -> 'a' | 'an' | 'this' | 'every' 
+Det[NUM=pl] -> 'these' | 'all' | 'some' | 'several'
+Det -> 'the'
 
 A -> 'big' | 'small' | 'red' | 'young' | 'fast'
 
-N -> 'car' | 'dog' | 'house'
+N[NUM=sg] -> 'car' | 'dog' | 'house'
+N[NUM=pl] -> 'cars' | 'dogs' | 'houses'
 
-V[SUBCAT=1] -> 'falls' | 'walks' | 'drives' | 'enters' | 'buys'
+V[NUM=sg,SUBCAT=1] -> 'falls' | 'walks' | 'drives' | 'enters' | 'buys'
+V[NUM=pl,SUBCAT=1] -> 'fall' | 'walk' | 'drive' | 'enter' | 'buy'
 
-V[SUBCAT=2] -> 'falls' | 'walks' | 'drives' | 'enters' | 'buys'
+V[NUM=sg,SUBCAT=2] -> 'falls' | 'walks' | 'drives' | 'enters' | 'buys'
+V[NUM=pl,SUBCAT=2] -> 'fall' | 'walk' | 'drive' | 'enter' | 'buy'
