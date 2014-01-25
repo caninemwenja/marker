@@ -1,6 +1,7 @@
 # parser.py - parses a given sentence using a given grammar definition
 
 import sys, os
+import argparse
 
 from nltk import load_parser
 
@@ -9,8 +10,6 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 GRAMMAR_URL = "file://%(url)s"
 
 # GRAMMAR_DIR = os.path.join(ROOT, 'grammars')
-
-USAGE = "Usage: %(prog)s grammar-file sentence trace cache"
 
 def get_parser(grammar_file, trace=2, cache=False):
     """ loads a parser from the given grammar """
@@ -29,23 +28,19 @@ def parse(parser, sentence):
     return parser.nbest_parse(tokenize(sentence))
 
 def main():
-    if len(sys.argv) < 3:
-        print USAGE % sys.argv[0]
+    parser = argparse.ArgumentParser()
+    parser.add_argument('grammar', 
+        help="file in local folder with grammar")
+    parser.add_argument('sentence', help="sentence to be parsed")
+    parser.add_argument('-t', '--trace', type=int, 
+        help="parser debug trace level")
+    parser.add_argument('-c', '--cache', action="store_true",
+        help="cache grammar or not")
 
-    grammar_file = sys.argv[1]
-    sentence = sys.argv[2]
+    args = parser.parse_args()
 
-    trace = 0
-    cache = False
-
-    if len(sys.argv) > 3:
-        trace = int(sys.argv[3])
-
-    if len(sys.argv) > 4 and sys.argv[4] == "True":
-        cache = True
-
-    parser = get_parser(grammar_file, trace=trace, cache=cache)
-    trees = parse(parser, sentence)
+    parser = get_parser(args.grammar, trace=args.trace, cache=args.cache)
+    trees = parse(parser, args.sentence)
 
     if len(trees) == 0:
         print "No parse trees found"
