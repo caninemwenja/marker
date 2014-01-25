@@ -1,5 +1,6 @@
 import argparse
 
+from pattern.en import pluralize
 from nltk.corpus import wordnet as wn
 
 def wn_browse(pos, action):
@@ -13,7 +14,19 @@ def print_tag(synset):
     print synset_name(synset)
 
 def gen_nouns(args):
-    wn_browse('n', print_tag)
+    def print_plural(synset):
+        print pluralize(synset_name(synset))
+    
+    def print_combined(synset):
+        print_tag(synset)
+        print_plural(synset)
+    
+    if args.plural:
+        wn_browse('n', print_plural)
+    elif args.singular:
+        wn_browse('n', print_tag)
+    else:
+        wn_browse('n', print_combined)
 
 def gen_verbs(args):
     wn_browse('v', print_tag)
@@ -31,11 +44,12 @@ def main():
 
     parser_nouns = subparsers.add_parser('nouns', 
         help="generate nouns")
-    parser_nouns.add_argument('-p', '--plural', action="store_true", 
+    group = parser_nouns.add_mutually_exclusive_group()
+    group.add_argument('-p', '--plural', action="store_true", 
         help="generate plural instances of nouns")
-    parser_nouns.add_argument('-s', '--singular', action="store_true",
+    group.add_argument('-s', '--singular', action="store_true",
         help="generate singular instances of nouns")
-    parser_nouns.add_argument('-a', '--all', action="store_true",
+    group.add_argument('-a', '--all', action="store_true",
         help="generate all instances of nouns, singular and plural")
     parser_nouns.set_defaults(func=gen_nouns)
 
