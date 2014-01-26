@@ -1,0 +1,2 @@
+{% include 'templates/noun.singular' %}
+{% include 'templates/noun.plural' %}
