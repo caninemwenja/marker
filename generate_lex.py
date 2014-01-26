@@ -1,6 +1,7 @@
 import argparse, os
 
-from pattern.en import pluralize
+from pattern.en import (pluralize, verbs, 
+    PRESENT, SINGULAR, PLURAL)
 from nltk.corpus import wordnet as wn
 from jinja2 import Template, Environment, FileSystemLoader
 
@@ -47,7 +48,26 @@ def gen_nouns(args):
         wn_browse('n', print_combined)
 
 def gen_verbs(args):
-    wn_browse('v', print_tag)
+    template = Template("{{ value }}")
+
+    if args.template:
+        template = jinja_env.get_template(args.template)
+
+    def print_template(synset):
+        value = {}
+        verb = synset_name(synset)
+        for tense in verbs.TENSES:
+            con = verbs.conjugate(verb, tense)
+            if con:
+                value['actual'] = con
+                value['time'] = tense[0]
+                value['pov'] = tense[1]
+                value['num'] = tense[2]
+                value['dir'] = tense[3]
+                value['prog'] = tense[4]
+                print template.render({'value': value})
+
+    wn_browse('v', print_template)
 
 def gen_adjs(args):
     wn_browse('a', print_tag)
@@ -75,6 +95,8 @@ def main():
 
     parser_verbs = subparsers.add_parser('verbs',
         help="generate verbs")
+    parser_verbs.add_argument('-t', '--template',
+        help="tailor verb output to this template")
     parser_verbs.set_defaults(func=gen_verbs)
     
     parser_adjs = subparsers.add_parser('adjs',
