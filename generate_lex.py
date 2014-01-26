@@ -1,7 +1,11 @@
-import argparse
+import argparse, os
 
 from pattern.en import pluralize
 from nltk.corpus import wordnet as wn
+from jinja2 import Template, Environment, FileSystemLoader
+
+THIS_DIR = os.path.dirname(os.path.abspath(__file__))
+jinja_env = Environment(loader=FileSystemLoader(THIS_DIR))
 
 def wn_browse(pos, action):
     for i in wn.all_synsets(pos):
@@ -14,17 +18,31 @@ def print_tag(synset):
     print synset_name(synset)
 
 def gen_nouns(args):
+    template = Template("{{ value  }}")
+
+    if args.template:
+        template = jinja_env.get_template(args.template)
+
     def print_plural(synset):
-        print pluralize(synset_name(synset))
-    
+        value = {}
+        value['plural'] = pluralize(synset_name(synset))
+        print template.render({'value': value})
+
+    def print_singular(synset):
+        value = {}
+        value['singular'] = synset_name(synset)
+        print template.render({'value': value})
+
     def print_combined(synset):
-        print_tag(synset)
-        print_plural(synset)
-    
+        value = {}
+        value['singular'] = synset_name(synset)
+        value['plural'] = pluralize(synset_name(synset))
+        print template.render({'value': value})
+
     if args.plural:
         wn_browse('n', print_plural)
     elif args.singular:
-        wn_browse('n', print_tag)
+        wn_browse('n', print_singular)
     else:
         wn_browse('n', print_combined)
 
@@ -51,6 +69,8 @@ def main():
         help="generate singular instances of nouns")
     group.add_argument('-a', '--all', action="store_true",
         help="generate all instances of nouns, singular and plural")
+    parser_nouns.add_argument('-t', '--template', 
+        help="tailor output to this template")
     parser_nouns.set_defaults(func=gen_nouns)
 
     parser_verbs = subparsers.add_parser('verbs',
