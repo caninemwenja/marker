@@ -25,6 +25,13 @@ AdverbAdjectives -> Adverbs Adjective
 Adverbs -> Adverb
 Adverbs -> Adverbs Adverb
 
+Adjective -> Adjective And Adjective | Adjective Or Adjective
+
+# TODO <noun> = noun [<prep_phrases>*]
+
+And -> 'and'
+Or -> 'or'
+
 The -> 'the'
 
 Specific_Proper_Noun -> 'Atlantic_Ocean'
@@ -39,7 +46,7 @@ Article -> The
 
 Adverb -> 'very' | 'extremely'
 
-Adjective -> 'long' | 'pretty' | 'yellow' | 'difficult'
+Adjective -> 'long' | 'pretty' | 'yellow' | 'difficult' | 'red'
 
 Noun[NUM=pl] -> 'books' | 'flowers' | 'shoes'
 
