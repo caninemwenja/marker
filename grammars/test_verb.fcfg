@@ -1,0 +1,105 @@
+Verb_Phrase -> Verb
+
+Verb -> V1s | V2s | V3s | V1p | V2p | V3p | Vpast | Linking_Verb
+
+Verb_Phrase -> Have Vpastp
+Verb_Phrase -> Have Not Vpastp
+
+Verb_Phrase -> Have Been Vpastp_or_Ving
+Verb_Phrase -> Have Not Been Vpastp_or_Ving
+Vpastp_or_Ving -> Vpastp
+Vpastp_or_Ving -> Ving
+
+Verb_Phrase -> AuxV Have[TIME=3] Vpastp
+Verb_Phrase -> AuxV Not Have[TIME=3] Vpastp
+
+Verb_Phrase -> AuxV Have[TIME=3] Been Vpastp_or_Ving
+Verb_Phrase -> AuxV Not Have[TIME=3] Been Vpastp_or_Ving
+
+Verb_Phrase -> AuxV Be Vpastp_or_Ving
+Verb_Phrase -> AuxV Not Be Vpastp_or_Ving
+
+Verb_Phrase -> AuxV Vinf
+Verb_Phrase -> AuxV Not Vinf
+
+Verb_Phrase -> Ought To_or_Not Vinf
+
+To_or_Not -> To
+To_or_Not -> Not
+
+Verb_Phrase -> Ought To_or_Not Be Vpastp_or_Ving
+
+Verb_Phrase -> Ought To_or_Not Have[TIME=3] Vpastp
+
+Verb_Phrase -> Ought To_or_Not Have[TIME=3] Been Vpastp_or_Ving
+
+Verb_Phrase -> Do
+Verb_Phrase -> Do Not
+Verb_Phrase -> Do Vinf
+Verb_Phrase -> Do Not Vinf
+
+Verb_Phrase -> Is Vpastp_or_Ving
+Verb_Phrase -> Is Not Vpastp_or_Ving
+
+Verb_Phrase -> Is Being
+Verb_Phrase -> Is Not Being
+Verb_Phrase -> Is Being Vpastp
+Verb_Phrase -> Is Not Being Vpastp
+
+Verb_Phrase -> Is Going To Vinf
+Verb_Phrase -> Is Going To
+Verb_Phrase -> Is Not Going To Vinf
+Verb_Phraes -> Is Not Going To
+
+Have[TIME=1] -> 'had'
+Have[TIME=2] -> 'has'
+Have[TIME=3] -> 'have'
+
+Is -> 'am' | 'are' | 'is' | 'was' | 'were'
+
+Do -> 'do' | 'does' | 'did'
+
+Been -> 'been'
+
+Be -> 'be'
+
+Being -> 'being'
+
+Not -> 'not'
+
+To -> 'to'
+
+Ought -> 'ought'
+
+Going -> 'going'
+
+V1s -> 'start' | 'walk'
+
+V2s -> 'start' | 'walk'
+
+V3s -> 'starts' | 'walks'
+
+V1p -> 'start' | 'walk'
+
+V2p -> 'start' | 'walk'
+
+V3p -> 'start' | 'walk'
+
+Vpast -> 'started' | 'walked'
+
+Vpastp -> 'gone' | 'finished' | 'studied' | 'done' | 'punished' | 'used'
+
+Ving -> 'studying' | 'drinking' | 'swimming' | 'eating'
+
+Vinf -> 'go' | 'eat' | 'study' | 'drink' | 'swim' | 'travel'
+
+Linking_Verb -> Is
+Linking_Verb -> Look
+Linking_Verb -> Become
+
+Look -> 'look' | 'looks' | 'looked' 
+Become -> 'become' | 'became' | 'become'
+
+AuxV -> 'must' | 'may' |'might' | 'will' |'would' |'shall' | 'should' |'can' |'could'
+
+

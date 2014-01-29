@@ -25,3 +25,8 @@ def test_prep():
     add_grammar('grammars/test_prep.fcfg',
         'grammars/prep.sample',
         'grammars/prep.sample.negative')
+
+def test_verb():
+    add_grammar('grammars/test_verb.fcfg',
+        'grammars/verb.sample',
+        'grammars/verb.sample.negative')
