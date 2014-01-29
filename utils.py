@@ -1,4 +1,5 @@
 import os, re
+import tempfile
 
 from nltk import load_parser
 
@@ -19,8 +20,8 @@ def get_file_content(filename):
         f.close()
 
         return data
-    except IOError:
-        raise Exception("Missing reference file")
+    except IOError, e:
+        raise Exception("Missing reference file: %s" % str(e))
 
 def clean_lines(data):
     lines = data.split("\n")
@@ -57,11 +58,31 @@ def parse_file(filename, seen_ref=None):
 
     return content
 
+def load_file(filename):
+    content = parse_file(filename)
+    actual_content = "\n".join(content)
+    return actual_content
+
 def load_grammar(grammar_file, trace=2, cache=False):
     """ loads a grammar parser from the given grammar file """
 
-    file = GRAMMAR_URL % {'url': os.path.join(ROOT, grammar_file)}
-    return load_parser(file, trace=trace, cache=cache)
+    # get grammar extension to pass to temp file name
+    ext = os.path.splitext(grammar_file)[-1]
+
+    # make temp file from ref parsed files and pass it load_parse
+    temp_file, temp_file_path = tempfile.mkstemp(suffix=ext,text=True)
+
+    temp_file = open(temp_file_path, "w")
+    temp_file.write(load_file(grammar_file))
+    temp_file.close()
+
+    file = GRAMMAR_URL % {'url': os.path.join(ROOT, temp_file_path)}
+    parser = load_parser(file, trace=trace, cache=cache)
+
+    # cheekily remove temp file
+    os.unlink(temp_file_path)
+
+    return parser
 
 def go_over_file(file, action):
     """ 
