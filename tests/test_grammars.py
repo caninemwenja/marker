@@ -1,22 +1,22 @@
 from .generic import GrammarTest
 
+def add_grammar(grammar, positive_sample, negative_sample):
+    grammar = GrammarTest(grammar, positive_sample,
+        negative_sample)
+    grammar.check_positive()
+    grammar.check_negative()
+
 def test_np():
-    grammar = GrammarTest('grammars/test_np.fcfg',
+    add_grammar('grammars/test_np.fcfg',
         'grammars/nounphrase.sample', 
         'grammars/nounphrase.sample.negative')
-    grammar.check_positive()
-    grammar.check_negative()
 
 def test_subject():
-    grammar = GrammarTest('grammars/test_subject.fcfg',
+    add_grammar('grammars/test_subject.fcfg',
         'grammars/subjectphrase.sample',
         'grammars/subjectphrase.sample.negative')
-    grammar.check_positive()
-    grammar.check_negative()
 
 def test_object():
-    grammar = GrammarTest('grammars/test_object.fcfg',
+    add_grammar('grammars/test_object.fcfg',
         'grammars/object.sample',
         'grammars/object.sample.negative')
-    grammar.check_positive()
-    grammar.check_negative()
