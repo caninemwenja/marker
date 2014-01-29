@@ -18,11 +18,8 @@ Noun_Phrase[NUM=?n] -> Article[NUM=?n] Noun[NUM=?n]
 
 Noun_Phrase -> Noun[NUM=pl]
 Noun_Phrase -> Proper_Noun_Possessive Noun
-Noun_Phrase -> Proper_Noun_Possessive Noun_Plural
 Noun_Phrase -> Personal_Possessive_Adjective Noun
-Noun_Phrase -> Personal_Possessive_Adjective Noun_Plural
 Noun_Phrase -> Article Common_Noun_Possessive Noun
-Noun_Phrase -> Article Common_Noun_Possessive Noun_Plural
 
 AdverbAdjectives -> Adjective
 AdverbAdjectives -> Adverbs Adjective
