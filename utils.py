@@ -33,19 +33,25 @@ def clean_lines(data):
 def get_file_lines(filename):
     return clean_lines(get_file_content(filename))
 
-def parse_file(filename):
+def parse_file(filename, seen_ref=None):
     """ 
     builds a large file from references to other files
     """
 
     content = []
+    seen_ref = seen_ref or []
 
     lines = get_file_lines(filename)
 
     for line in lines:
         match = REF_REGX_COMPILER.match(line)
         if match:
-            content += parse_file(match.group('url'))
+            url = match.group('url')
+
+            # watch out for circular references
+            if url not in seen_ref:
+                seen_ref.append(url)
+                content += parse_file(match.group('url'), seen_ref)
         else:
             content.append(line)
 
