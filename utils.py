@@ -34,17 +34,26 @@ def clean_lines(data):
 def get_file_lines(filename):
     return clean_lines(get_file_content(filename))
 
-def parse_file(filename, seen_ref=None):
+def parse_file(filename, seen_ref=None, ignore_lines=None):
     """ 
     builds a large file from references to other files
     """
 
     content = []
     seen_ref = seen_ref or []
+    
+    ignore_compiler=None
+
+    if ignore_lines:
+        ignore_regex = "|".join(ignore_lines)
+        ignore_compiler = re.compile(ignore_regex)
 
     lines = get_file_lines(filename)
 
     for line in lines:
+        if ignore_compiler and ignore_compiler.match(line):
+                continue
+
         match = REF_REGX_COMPILER.match(line)
         if match:
             url = match.group('url')
@@ -52,13 +61,17 @@ def parse_file(filename, seen_ref=None):
             # watch out for circular references
             if url not in seen_ref:
                 seen_ref.append(url)
-                content += parse_file(match.group('url'), seen_ref)
+                content += parse_file(match.group('url'), 
+                    seen_ref, ignore_lines)
         else:
             content.append(line)
 
     return content
 
 def load_file(filename):
+    ignore_lines = [
+        "^\#.*$", # ignore comments
+    ]
     content = parse_file(filename)
     actual_content = "\n".join(content)
     return actual_content

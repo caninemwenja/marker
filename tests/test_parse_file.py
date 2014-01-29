@@ -9,6 +9,8 @@ test_files = {
     'test3.txt': "some junk\nsome other junk",
     'test4.txt': "junk\nref test1.txt\nref test2.txt",
     'test5.txt': "junk\nsome junk\nsome other junk",
+    'test6.txt': "junk\n#comment",
+    'test7.txt': "junk",
 }
 
 error_msg_tpl = "Content does not match: %s vs %s"
@@ -43,3 +45,17 @@ def test_circular_ref():
 
     error_msg = error_msg_tpl % (actual_content, control)
     assert actual_content == control, error_msg
+
+@with_setup(setup, teardown)
+def test_ignore_lines():
+    ignore_lines = [
+        "^\#.*",
+    ]
+    content = parse_file('test6.txt', ignore_lines=ignore_lines)
+    actual_content = "\n".join(content)
+
+    control = get_file_content('test7.txt')
+
+    error_msg = error_msg_tpl % (actual_content, control)
+    assert actual_content == control, error_msg
+
