@@ -13,11 +13,14 @@ REF_PATTERN = "^ref (?P<url>.*(\/.*)*)$"
 REF_REGX_COMPILER = re.compile(REF_PATTERN)
 
 def get_file_content(filename):
-    f = open(filename)
-    data = f.read()
-    f.close()
+    try:
+        f = open(filename)
+        data = f.read()
+        f.close()
 
-    return data
+        return data
+    except IOError:
+        raise Exception("Missing reference file")
 
 def clean_lines(data):
     lines = data.split("\n")
