@@ -1,0 +1,11 @@
+Indirect_Object -> Object
+Object -> Simple_Object | Compound_Object
+
+Compound_Object -> Simple_Object And Simple_Object
+Compound_Object -> Simple_Object Or Simple_Object
+
+Simple_Object -> Noun_Phrase | Objective_Personal_Pronoun
+
+Objective_Personal_Pronoun -> 'me' | 'you' | 'him' | 'her' | 'us' | 'them'
+
+ref grammars/test_np.fcfg
