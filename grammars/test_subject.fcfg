@@ -1,3 +1,6 @@
 Simple_Subject -> Noun_Phrase
+Simple_Subject -> Nominative_Personal_Pronoun
+
+Nominative_Personal_Pronoun -> 'I' | 'you' | 'we' | 'they' | 'he' | 'she' | 'it'
 
 ref grammars/test_np.fcfg
