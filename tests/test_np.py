@@ -1,13 +1,21 @@
 from parser_tool import parse, get_parser
+from utils import go_over_file
 
-def test_np():
-    grammar = get_parser("grammars/test_np.fcfg", trace=0)
+grammar = get_parser("grammars/test_np.fcfg", trace=0)
 
-    f = open("grammars/nounphrase.sample")
-    for line in f:
-        # remove newline
-        actual_line = line[:-1]
+def test_np_positive():
+    def is_ok(sentence):
+        trees = parse(grammar, sentence)
+        assert len(trees) > 0, "Failed: %s" % sentence
+    
+    go_over_file("grammars/nounphrase.sample", is_ok)
 
-        trees = parse(grammar, actual_line)
-        assert len(trees) > 0, "Failed: %s" % actual_line
-    f.close()
+def test_np_negative():
+    """ tests to see if grammar refuses wrong samples """
+    
+    def is_not_ok(sentence):
+        trees = parse(grammar, sentence)
+        assert len(trees) == 0, "Failed: %s" % sentence
+
+    go_over_file("grammars/nounphrase.sample.negative", is_not_ok)
+
