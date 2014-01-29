@@ -20,3 +20,8 @@ def test_object():
     add_grammar('grammars/test_object.fcfg',
         'grammars/object.sample',
         'grammars/object.sample.negative')
+
+def test_prep():
+    add_grammar('grammars/test_prep.fcfg',
+        'grammars/prep.sample',
+        'grammars/prep.sample.negative')

@@ -1,0 +1,5 @@
+Prep_Phrase -> Prep Object
+
+Prep -> 'on' | 'of'
+
+ref grammars/test_object.fcfg
