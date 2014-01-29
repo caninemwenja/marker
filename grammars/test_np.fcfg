@@ -27,7 +27,7 @@ Adverbs -> Adverbs Adverb
 
 Adjective -> Adjective And Adjective | Adjective Or Adjective
 
-# TODO <noun> = noun [<prep_phrases>*]
+Noun -> Noun PrepPhrases
 
 And -> 'and'
 Or -> 'or'
@@ -58,3 +58,4 @@ Personal_Possessive_Adjective -> 'his' | 'my'
 
 Common_Noun_Possessive -> 'dog_qt_s' | 'book_qt_s'
 
+ref grammars/test_prep.fcfg

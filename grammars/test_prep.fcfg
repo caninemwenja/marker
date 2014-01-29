@@ -1,3 +1,6 @@
+PrepPhrases -> Prep_Phrase
+PrepPhrases -> PrepPhrases Prep_Phrase
+
 Prep_Phrase -> Prep Object
 
 Prep -> 'on' | 'of'
