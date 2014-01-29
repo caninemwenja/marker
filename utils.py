@@ -1,4 +1,4 @@
-import os
+import os, re
 
 from nltk import load_parser
 
@@ -7,6 +7,46 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 GRAMMAR_URL = "file://%(url)s"
 
 # GRAMMAR_DIR = os.path.join(ROOT, 'grammars')
+
+REF_PATTERN = "^ref (?P<url>.*(\/.*)*)$"
+
+REF_REGX_COMPILER = re.compile(REF_PATTERN)
+
+def get_file_content(filename):
+    f = open(filename)
+    data = f.read()
+    f.close()
+
+    return data
+
+def clean_lines(data):
+    lines = data.split("\n")
+
+    # get rid of the newline
+    lines = map(lambda x: x.replace('\n',''), lines)
+
+    return lines
+
+def get_file_lines(filename):
+    return clean_lines(get_file_content(filename))
+
+def parse_file(filename):
+    """ 
+    builds a large file from references to other files
+    """
+
+    content = []
+
+    lines = get_file_lines(filename)
+
+    for line in lines:
+        match = REF_REGX_COMPILER.match(line)
+        if match:
+            content += parse_file(match.group('url'))
+        else:
+            content.append(line)
+
+    return content
 
 def load_grammar(grammar_file, trace=2, cache=False):
     """ loads a grammar parser from the given grammar file """
