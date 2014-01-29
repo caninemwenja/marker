@@ -9,6 +9,7 @@ Noun_Phrase -> Proper_Noun_Possessive AdverbAdjectives Noun
 Noun_Phrase -> Personal_Possessive_Adjective AdverbAdjectives Noun
 Noun_Phrase -> Article Common_Noun_Possessive AdverbAdjectives Noun
 Noun_Phrase -> Article Noun
+Noun_Phrase -> Article Noun_Plural
 Noun_Phrase -> Noun_Plural
 Noun_Phrase -> Proper_Noun_Possessive Noun
 Noun_Phrase -> Proper_Noun_Possessive Noun_Plural
