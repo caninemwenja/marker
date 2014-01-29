@@ -14,3 +14,9 @@ def test_subject():
     grammar.check_positive()
     grammar.check_negative()
 
+def test_object():
+    grammar = GrammarTest('grammars/test_object.fcfg',
+        'grammars/object.sample',
+        'grammars/object.sample.negative')
+    grammar.check_positive()
+    grammar.check_negative()
