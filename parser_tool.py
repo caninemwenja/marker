@@ -31,7 +31,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('grammar', 
         help="file in local folder with grammar")
-    parser.add_argument('sentence', help="sentence to be parsed")
+    parser.add_argument('sentence', nargs="*",
+        help="sentence to be parsed")
     parser.add_argument('-t', '--trace', type=int, 
         help="parser debug trace level")
     parser.add_argument('-c', '--cache', action="store_true",
@@ -39,8 +40,10 @@ def main():
 
     args = parser.parse_args()
 
+    sentence = " ".join(args.sentence)
+
     parser = get_parser(args.grammar, trace=args.trace, cache=args.cache)
-    trees = parse(parser, args.sentence)
+    trees = parse(parser, sentence)
 
     if len(trees) == 0:
         print "No parse trees found"
