@@ -1,5 +1,3 @@
-%start Noun_Phrase
-
 # [NUM=sg] => singular
 # [NUM=pl] => plural
 
