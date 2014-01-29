@@ -1,0 +1,15 @@
+Declarative -> Subject Predicate
+
+Noun -> 'name'
+Noun[NUM=pl] -> 'sentences'
+
+Proper_Noun -> 'Mary'
+
+Adjective -> 'declarative'
+
+Vinf -> 'form'
+
+V3s -> 'used'
+
+ref grammars/test_subject.fcfg
+ref grammars/test_predicate.fcfg

@@ -41,3 +41,7 @@ def test_predicate():
         'grammars/predicate.sample',
         'grammars/predicate.sample.negative')
 
+def test_declarative():
+    add_grammar('grammars/test_declarative.fcfg',
+        'grammars/declarative.sample',
+        'grammars/declarative.sample.negative')
