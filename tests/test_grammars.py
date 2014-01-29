@@ -30,3 +30,8 @@ def test_verb():
     add_grammar('grammars/test_verb.fcfg',
         'grammars/verb.sample',
         'grammars/verb.sample.negative')
+
+def test_complement():
+    add_grammar('grammars/test_complement.fcfg',
+        'grammars/complement.sample',
+        'grammars/complement.sample.negative')
