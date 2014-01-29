@@ -1,6 +1,7 @@
 Complement -> Object
 Complement -> Indirect_Object Object
 Complement -> AdverbAdjectives
+Complement -> Adverbs
 Complement -> PrepPhrases
 Complement -> To Vinf
 Complement -> To Vinf Object

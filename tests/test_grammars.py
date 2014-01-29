@@ -35,3 +35,9 @@ def test_complement():
     add_grammar('grammars/test_complement.fcfg',
         'grammars/complement.sample',
         'grammars/complement.sample.negative')
+
+def test_predicate():
+    add_grammar('grammars/test_predicate.fcfg',
+        'grammars/predicate.sample',
+        'grammars/predicate.sample.negative')
+

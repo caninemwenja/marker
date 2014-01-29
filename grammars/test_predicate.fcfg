@@ -1,0 +1,18 @@
+Predicate -> Verb_or_Verb_Phrase
+Predicate -> Verb_or_Verb_Phrase Complement
+
+Verb_or_Verb_Phrase -> Verb
+Verb_or_Verb_Phrase -> Verb_Phrase
+
+V1s -> 'want'
+V2s -> 'want'
+V3s -> 'studies'
+
+V1p -> 'went' | 'spent' | 'gave' | 'slept' | 'studied'
+V2p -> 'went' | 'spent' | 'gave' | 'slept' | 'studied'
+V3p -> 'went' | 'spent' | 'gave' | 'slept' | 'studied'
+
+Adverb -> 'everyday' | 'yesterday'
+
+ref grammars/test_verb.fcfg
+ref grammars/test_complement.fcfg
