@@ -6,7 +6,9 @@
 Noun_Phrase -> The Specific_Proper_Noun
 Noun_Phrase -> Proper_Noun
 Noun_Phrase -> Non_Personal_Pronoun
-Noun_Phrase -> Article AdverbAdjectives Noun
+
+Noun_Phrase[NUM=?n] -> Article[NUM=?n] AdverbAdjectives Noun[NUM=?n]
+
 Noun_Phrase -> AdverbAdjectives Noun[NUM=pl]
 Noun_Phrase -> Proper_Noun_Possessive AdverbAdjectives Noun
 Noun_Phrase -> Personal_Possessive_Adjective AdverbAdjectives Noun
@@ -22,7 +24,7 @@ Noun_Phrase -> Personal_Possessive_Adjective Noun_Plural
 Noun_Phrase -> Article Common_Noun_Possessive Noun
 Noun_Phrase -> Article Common_Noun_Possessive Noun_Plural
 
-
+AdverbAdjectives -> Adjective
 AdverbAdjectives -> Adverbs Adjective
 
 Adverbs -> Adverb
@@ -38,7 +40,7 @@ Proper_Noun -> 'John' | 'America' | 'Dr_Allen' | 'State_Street'
 Non_Personal_Pronoun -> 'someone' | 'anyone' | 'this'
 
 Article[NUM=sg] -> 'a' | 'an'
-Article -> 'the'
+Article -> The
 
 Adverb -> 'very' | 'extremely'
 
