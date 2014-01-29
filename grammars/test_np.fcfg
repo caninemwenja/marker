@@ -1,16 +1,20 @@
 %start Noun_Phrase
 
+# [NUM=sg] => singular
+# [NUM=pl] => plural
+
 Noun_Phrase -> The Specific_Proper_Noun
 Noun_Phrase -> Proper_Noun
 Noun_Phrase -> Non_Personal_Pronoun
 Noun_Phrase -> Article AdverbAdjectives Noun
-Noun_Phrase -> AdverbAdjectives Noun_Plural
+Noun_Phrase -> AdverbAdjectives Noun[NUM=pl]
 Noun_Phrase -> Proper_Noun_Possessive AdverbAdjectives Noun
 Noun_Phrase -> Personal_Possessive_Adjective AdverbAdjectives Noun
 Noun_Phrase -> Article Common_Noun_Possessive AdverbAdjectives Noun
-Noun_Phrase -> Article Noun
-Noun_Phrase -> Article Noun_Plural
-Noun_Phrase -> Noun_Plural
+
+Noun_Phrase[NUM=?n] -> Article[NUM=?n] Noun[NUM=?n]
+
+Noun_Phrase -> Noun[NUM=pl]
 Noun_Phrase -> Proper_Noun_Possessive Noun
 Noun_Phrase -> Proper_Noun_Possessive Noun_Plural
 Noun_Phrase -> Personal_Possessive_Adjective Noun
@@ -33,15 +37,16 @@ Proper_Noun -> 'John' | 'America' | 'Dr_Allen' | 'State_Street'
 
 Non_Personal_Pronoun -> 'someone' | 'anyone' | 'this'
 
-Article -> 'a' | 'an' | 'the'
+Article[NUM=sg] -> 'a' | 'an'
+Article -> 'the'
 
 Adverb -> 'very' | 'extremely'
 
 Adjective -> 'long' | 'pretty' | 'yellow' | 'difficult'
 
-Noun_Plural -> 'books' | 'flowers' | 'shoes'
+Noun[NUM=pl] -> 'books' | 'flowers' | 'shoes'
 
-Noun -> 'book' | 'bridge' | 'dress' | 'sentence' | 'style' | 'tail' | 'hair'
+Noun[NUM=sg] -> 'book' | 'bridge' | 'dress' | 'sentence' | 'style' | 'tail' | 'hair'
 
 Proper_Noun_Possessive -> 'John_qt_s' | 'Mary_qt_s'
 
