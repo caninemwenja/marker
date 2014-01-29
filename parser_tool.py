@@ -3,19 +3,11 @@
 import sys, os
 import argparse
 
-from nltk import load_parser
+from utils import load_grammar
 
-ROOT = os.path.dirname(os.path.abspath(__file__))
-
-GRAMMAR_URL = "file://%(url)s"
-
-# GRAMMAR_DIR = os.path.join(ROOT, 'grammars')
-
-def get_parser(grammar_file, trace=2, cache=False):
+def get_parser(grammar_file, *args, **kwargs):
     """ loads a parser from the given grammar """
-
-    file = GRAMMAR_URL % {'url': os.path.join(ROOT, grammar_file)}
-    return load_parser(file, trace=trace, cache=cache)
+    return load_grammar(grammar_file, *args, **kwargs)
 
 def tokenize(sentence):
     """ breaks down a string into tokens for parsing """
