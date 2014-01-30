@@ -1,27 +1,14 @@
-Complement -> Object
-Complement -> Indirect_Object Object
-Complement -> AdverbAdjectives
-Complement -> Adverbs
-Complement -> PrepPhrases
-Complement -> To Vinf
-Complement -> To Vinf Object
-Complement -> Ving
-
-Noun -> 'money' | 'rent' | 'ten' | 'water'
-
-Proper_Noun -> 'Thursday'
-
-Adjective -> 'little' | 'angry'
-
-Vinf -> 'pay'
-
-Ving -> 'shopping'
-
-Adverb -> 'very'
-
-Prep -> 'until' | 'on'
+Complement[OBJECT=?o] -> Object[OBJECT=?o]
+Complement[OBJECT=?o] -> Indirect_Object Object[OBJECT=?o]
+Complement[OBJECT=?o] -> AdverbAdjectives
+Complement[OBJECT=?o] -> Adverbs
+Complement[OBJECT=?o] -> PrepPhrases
+Complement[OBJECT=?o] -> To Vinf
+Complement[OBJECT=?o] -> To Vinf Object[OBJECT=?o]
+Complement[OBJECT=?o] -> Ving
 
 ref grammars/test_verb.fcfg
 ref grammars/test_object.fcfg
 ref grammars/test_np.fcfg
 ref grammars/test_prep.fcfg
+ref grammars/test_sample_lex.fcfg

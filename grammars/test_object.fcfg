@@ -1,11 +1,10 @@
 Indirect_Object -> Object
-Object -> Simple_Object | Compound_Object
+Object[OBJECT=?o] -> Simple_Object[OBJECT=?o] | Compound_Object
 
 Compound_Object -> Simple_Object And Simple_Object
 Compound_Object -> Simple_Object Or Simple_Object
 
-Simple_Object -> Noun_Phrase | Objective_Personal_Pronoun
-
-Objective_Personal_Pronoun -> 'me' | 'you' | 'him' | 'her' | 'us' | 'them'
+Simple_Object[OBJECT=?o] -> Noun_Phrase[SUBJECT=?o] | Objective_Personal_Pronoun
 
 ref grammars/test_np.fcfg
+ref grammars/test_sample_lex.fcfg

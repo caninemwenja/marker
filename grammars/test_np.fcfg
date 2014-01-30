@@ -1,23 +1,23 @@
 # [NUM=sg] => singular
 # [NUM=pl] => plural
 
-Noun_Phrase -> The Specific_Proper_Noun
-Noun_Phrase -> Proper_Noun
-Noun_Phrase -> Non_Personal_Pronoun
+Noun_Phrase[SUBJECT=?s] -> The Specific_Proper_Noun[SUBJECT=?s]
+Noun_Phrase[SUBJECT=?s] -> Proper_Noun[SUBJECT=?s]
+Noun_Phrase[SUBJECT=?s] -> Non_Personal_Pronoun[SUBJECT=?s]
 
-Noun_Phrase[NUM=?n] -> Article[NUM=?n] AdverbAdjectives Noun[NUM=?n]
+Noun_Phrase[NUM=?n, SUBJECT=?s] -> Article[NUM=?n] AdverbAdjectives Noun[NUM=?n, SUBJECT=?s]
 
-Noun_Phrase -> AdverbAdjectives Noun[NUM=pl]
-Noun_Phrase -> Proper_Noun_Possessive AdverbAdjectives Noun
-Noun_Phrase -> Personal_Possessive_Adjective AdverbAdjectives Noun
-Noun_Phrase -> Article Common_Noun_Possessive AdverbAdjectives Noun
+Noun_Phrase[SUBJECT=?s] -> AdverbAdjectives Noun[SUBJECT=?s, NUM=pl]
+Noun_Phrase[SUBJECT=?s] -> Proper_Noun_Possessive AdverbAdjectives Noun[SUBJECT=?s]
+Noun_Phrase[SUBJECT=?s] -> Personal_Possessive_Adjective AdverbAdjectives Noun[SUBJECT=?s]
+Noun_Phrase[SUBJECT=?s] -> Article Common_Noun_Possessive AdverbAdjectives Noun[SUBJECT=?s]
 
-Noun_Phrase[NUM=?n] -> Article[NUM=?n] Noun[NUM=?n]
+Noun_Phrase[NUM=?n, SUBJECT=?s] -> Article[NUM=?n] Noun[SUBJECT=?s, NUM=?n]
 
-Noun_Phrase -> Noun[NUM=pl]
-Noun_Phrase -> Proper_Noun_Possessive Noun
-Noun_Phrase -> Personal_Possessive_Adjective Noun
-Noun_Phrase -> Article Common_Noun_Possessive Noun
+Noun_Phrase[SUBJECT=?s] -> Noun[SUBJECT=?s, NUM=pl]
+Noun_Phrase[SUBJECT=?s] -> Proper_Noun_Possessive Noun[SUBJECT=?s]
+Noun_Phrase[SUBJECT=?s] -> Personal_Possessive_Adjective Noun[SUBJECT=?s]
+Noun_Phrase[SUBJECT=?s] -> Article Common_Noun_Possessive Noun[SUBJECT=?s]
 
 AdverbAdjectives -> Adjective
 AdverbAdjectives -> Adverbs Adjective
@@ -27,35 +27,7 @@ Adverbs -> Adverbs Adverb
 
 Adjective -> Adjective And Adjective | Adjective Or Adjective
 
-Noun -> Noun PrepPhrases
-
-And -> 'and'
-Or -> 'or'
-
-The -> 'the'
-
-Specific_Proper_Noun -> 'Atlantic_Ocean'
-Specific_Proper_Noun -> 'Sahara'
-
-Proper_Noun -> 'John' | 'America' | 'Dr_Allen' | 'State_Street'
-
-Non_Personal_Pronoun -> 'someone' | 'anyone' | 'this'
-
-Article[NUM=sg] -> 'a' | 'an'
-Article -> The
-
-Adverb -> 'very' | 'extremely'
-
-Adjective -> 'long' | 'pretty' | 'yellow' | 'difficult' | 'red'
-
-Noun[NUM=pl] -> 'books' | 'flowers' | 'shoes'
-
-Noun[NUM=sg] -> 'book' | 'bridge' | 'dress' | 'sentence' | 'style' | 'tail' | 'hair'
-
-Proper_Noun_Possessive -> 'John_qt_s' | 'Mary_qt_s'
-
-Personal_Possessive_Adjective -> 'his' | 'my'
-
-Common_Noun_Possessive -> 'dog_qt_s' | 'book_qt_s'
+Noun[SUBJECT=?s] -> Noun[SUBJECT=?s] PrepPhrases
 
 ref grammars/test_prep.fcfg
+ref grammars/test_sample_lex.fcfg

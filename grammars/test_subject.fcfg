@@ -1,17 +1,12 @@
-Subject -> Simple_Subject
-Subject -> Compound_Subject
+Subject[SUBJECT=?s] -> Simple_Subject[SUBJECT=?s]
+Subject[SUBJECT=''] -> Compound_Subject
 
 Compound_Subject -> Simple_Subject And Simple_Subject | Simple_Subject Or Simple_Subject
 Compound_Subject -> Either Simple_Subject Or Simple_Subject
 Compound_Subject -> Neither Simple_Subject Nor Simple_Subject
 
-Simple_Subject -> Noun_Phrase
+Simple_Subject[SUBJECT=?s] -> Noun_Phrase[SUBJECT=?s]
 Simple_Subject -> Nominative_Personal_Pronoun
 
-Nominative_Personal_Pronoun -> 'I' | 'you' | 'we' | 'they' | 'he' | 'she' | 'it'
-
-Either -> 'Either'
-Neither -> 'Neither'
-Nor -> 'nor'
-
 ref grammars/test_np.fcfg
+ref grammars/test_sample_lex.fcfg

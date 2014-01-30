@@ -1,18 +1,8 @@
-Predicate -> Verb_or_Verb_Phrase
-Predicate -> Verb_or_Verb_Phrase Complement
+Predicate[PREDICATE=?p, OBJECT=?o] -> Verb_or_Verb_Phrase[PREDICATE=?p]
+Predicate[PREDICATE=?p, OBJECT=?o] -> Verb_or_Verb_Phrase[PREDICATE=?p] Complement[OBJECT=?o]
 
-Verb_or_Verb_Phrase -> Verb
-Verb_or_Verb_Phrase -> Verb_Phrase
-
-V1s -> 'want'
-V2s -> 'want'
-V3s -> 'studies'
-
-V1p -> 'went' | 'spent' | 'gave' | 'slept' | 'studied'
-V2p -> 'went' | 'spent' | 'gave' | 'slept' | 'studied'
-V3p -> 'went' | 'spent' | 'gave' | 'slept' | 'studied'
-
-Adverb -> 'everyday' | 'yesterday'
+Verb_or_Verb_Phrase[PREDICATE=?p] -> Verb[PREDICATE=?p]
+Verb_or_Verb_Phrase[PREDICATE=?p] -> Verb_Phrase[PREDICATE=?p]
 
 ref grammars/test_verb.fcfg
 ref grammars/test_complement.fcfg
