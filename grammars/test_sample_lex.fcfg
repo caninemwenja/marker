@@ -1,0 +1,135 @@
+Noun[SUBJECT=name, OBJECT=name] -> 'name'
+Noun[SUBJECT=sentence, OBJECT=sentence, NUM=pl] -> 'sentences'
+
+Proper_Noun[SUBJECT=Mary, OBJECT=Mary] -> 'Mary'
+
+Adjective -> 'declarative'
+
+Vinf[PREDICATE=form] -> 'form'
+
+V3s[PREDICATE=use] -> 'used'
+
+Nominative_Personal_Pronoun -> 'I' | 'you' | 'we' | 'they' | 'he' | 'she' | 'it'
+
+Either -> 'Either'
+Neither -> 'Neither'
+Nor -> 'nor'
+And -> 'and'
+Or -> 'or'
+
+The -> 'the'
+
+Specific_Proper_Noun[SUBJECT=Atlantic_Ocean, OBJECT=Atlantic_Ocean] -> 'Atlantic_Ocean'
+Specific_Proper_Noun[SUBECT=Sahara] -> 'Sahara'
+
+Proper_Noun[SUBJECT=John, OBJECT=John] -> 'John'
+Proper_Noun[SUBJECT=America, OBJECT=America] -> 'America'
+Proper_Noun[SUBJECT=Dr_Allen, OBJECT=Dr_Allen] -> 'Dr_Allen' 
+Proper_Noun[SUBJECT=State_Street, OBJECT=State_Street] -> 'State_Street'
+
+Non_Personal_Pronoun -> 'someone' | 'anyone' | 'this'
+
+Article[NUM=sg] -> 'a' | 'an'
+Article -> The
+
+Adverb -> 'very' | 'extremely'
+
+Adjective -> 'long' | 'pretty' | 'yellow' | 'difficult' | 'red'
+
+Noun[SUBJECT=book, OBJECT=book,NUM=pl] -> 'books' 
+Noun[SUBJECT=flower, OBJECT=flower,NUM=pl] ->  'flowers' 
+Noun[SUBJECT=book, OBJECT=book,NUM=pl] -> 'shoes'
+
+Noun[SUBJECT=book, OBJECT=book, NUM=sg] -> 'book'
+Noun[SUBJECT=bridge, OBJECT=bridge,NUM=sg] -> 'bridge'
+Noun[SUBJECT=dress, OBJECT=dress,NUM=sg] -> 'dress'
+Noun[SUBJECT=sentence, OBJECT=sentence,NUM=sg] -> 'sentence'
+Noun[SUBJECT=style, OBJECT=style,NUM=sg] -> 'style'
+Noun[SUBJECT=tail, OBJECT=tail,NUM=sg] -> 'tail'
+Noun[SUBJECT=hair, OBJECT=hair,NUM=sg] -> 'hair'
+
+Proper_Noun_Possessive -> 'John_qt_s' | 'Mary_qt_s'
+
+Personal_Possessive_Adjective -> 'his' | 'my'
+
+Common_Noun_Possessive -> 'dog_qt_s' | 'book_qt_s'
+
+
+V1s -> 'want'
+V2s -> 'want'
+V3s -> 'studies'
+
+V1p -> 'went' | 'spent' | 'gave' | 'slept' | 'studied'
+V2p -> 'went' | 'spent' | 'gave' | 'slept' | 'studied'
+V3p -> 'went' | 'spent' | 'gave' | 'slept' | 'studied'
+
+Adverb -> 'everyday' | 'yesterday'
+
+Have[TIME=1] -> 'had'
+Have[TIME=2] -> 'has'
+Have[TIME=3] -> 'have'
+
+Is -> 'am' | 'are' | 'is' | 'was' | 'were'
+
+Do -> 'do' | 'does' | 'did'
+
+Been -> 'been'
+
+Be -> 'be'
+
+Being -> 'being'
+
+Not -> 'not'
+
+To -> 'to'
+
+Ought -> 'ought'
+
+Going -> 'going'
+
+V1s -> 'start' | 'walk'
+
+V2s -> 'start' | 'walk'
+
+V3s -> 'starts' | 'walks'
+
+V1p -> 'start' | 'walk'
+
+V2p -> 'start' | 'walk'
+
+V3p -> 'start' | 'walk'
+
+Vpast -> 'started' | 'walked'
+
+Vpastp -> 'gone' | 'finished' | 'studied' | 'done' | 'punished' | 'used'
+
+Ving -> 'studying' | 'drinking' | 'swimming' | 'eating'
+
+Vinf -> 'go' | 'eat' | 'study' | 'drink' | 'swim' | 'travel'
+
+Linking_Verb -> Is
+Linking_Verb -> Look
+Linking_Verb -> Become
+
+Look -> 'look' | 'looks' | 'looked' 
+Become -> 'become' | 'became' | 'become'
+
+AuxV -> 'must' | 'may' |'might' | 'will' |'would' |'shall' | 'should' |'can' |'could'
+Noun[subject=money, object=money] -> 'money'
+Noun[SUBJECT=rent, OBJECT=rent] -> 'rent'
+Noun[SUBJECT=ten, OBJECT=ten] -> 'ten'
+Noun[SUBJECT=water, OBJECT=water] -> 'water'
+
+Proper_Noun -> 'Thursday'
+
+Adjective -> 'little' | 'angry'
+
+Vinf -> 'pay'
+
+Ving -> 'shopping'
+
+Adverb -> 'very'
+
+Prep -> 'until' | 'on'
+
+Objective_Personal_Pronoun -> 'me' | 'you' | 'him' | 'her' | 'us' | 'them'
