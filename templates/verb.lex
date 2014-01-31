@@ -1,0 +1,1 @@
+V{% if value.time == "past" %}{% if value.prog == "progressive" %}pastp{% else %}past{% endif %}{% elif value.time == "present" %}{% if value.prog == "progressive" %}ing{% else %}{{ value.pov }}{% if value.num == "plural" %}p{% else %}s{% endif %}{% endif %}{% else %}inf{% endif %}[PREDICATE={{ value.original }}] -> '{{ value.actual }}'

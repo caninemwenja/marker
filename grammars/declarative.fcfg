@@ -1,0 +1,6 @@
+Declarative[SUBJECT=?sub, PREDICATE=?pred, OBJECT=?obj] -> Subject[SUBJECT=?sub] Predicate[PREDICATE=?pred, OBJECT=?obj]
+
+ref grammars/test_subject.fcfg
+ref grammars/test_predicate.fcfg
+ref grammars/test_sample_lex.fcfg
+ref grammars/custom_lex.fcfg

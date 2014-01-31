@@ -1,4 +1,4 @@
-Predicate[PREDICATE=?p, OBJECT=?o] -> Verb_or_Verb_Phrase[PREDICATE=?p]
+Predicate[PREDICATE=?p, OBJECT=?o] -> Verb_or_Verb_Phrase[PREDICATE=?p, OBJECT='']
 Predicate[PREDICATE=?p, OBJECT=?o] -> Verb_or_Verb_Phrase[PREDICATE=?p] Complement[OBJECT=?o]
 
 Verb_or_Verb_Phrase[PREDICATE=?p] -> Verb[PREDICATE=?p]

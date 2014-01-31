@@ -2,7 +2,7 @@ Complement[OBJECT=?o] -> Object[OBJECT=?o]
 Complement[OBJECT=?o] -> Indirect_Object Object[OBJECT=?o]
 Complement[OBJECT=?o] -> AdverbAdjectives
 Complement[OBJECT=?o] -> Adverbs
-Complement[OBJECT=?o] -> PrepPhrases
+Complement[OBJECT=?o] -> PrepPhrases[OBJECT=?o]
 Complement[OBJECT=?o] -> To Vinf
 Complement[OBJECT=?o] -> To Vinf Object[OBJECT=?o]
 Complement[OBJECT=?o] -> Ving

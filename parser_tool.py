@@ -29,7 +29,7 @@ def main():
         help="parser debug trace level")
     parser.add_argument('-c', '--cache', action="store_true",
         help="cache grammar or not")
-    parser.add_argument('-f', '--feature',
+    parser.add_argument('-f', '--feature', action="append",
         help="show feature in parse tree")
 
     args = parser.parse_args()
@@ -45,8 +45,10 @@ def main():
 
     for tree in trees:
         print tree
-        if args.feature and args.feature in tree.node:
-            print tree.node[args.feature]
+        if args.feature:
+            for f in args.feature:
+                if f in tree.node:
+                    print tree.node[f]
 
 if __name__ == "__main__":
     main()

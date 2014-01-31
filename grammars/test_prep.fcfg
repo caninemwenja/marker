@@ -1,7 +1,7 @@
-PrepPhrases -> Prep_Phrase
-PrepPhrases -> PrepPhrases Prep_Phrase
+PrepPhrases[OBJECT=?o] -> Prep_Phrase[OBJECT=?o]
+PrepPhrases[OBJECT=?o]-> PrepPhrases[OBJECT=?o] Prep_Phrase
 
-Prep_Phrase -> Prep Object
+Prep_Phrase[OBJECT=?o] -> Prep Object[OBJECT=?o]
 
 Prep -> 'on' | 'of'
 

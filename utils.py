@@ -109,3 +109,34 @@ def go_over_file(file, action):
         action(actual_line)
     f.close()
 
+from nltk.corpus import wordnet as wn
+
+def similar(word1, word2):
+    if (word1 == '' or not word1) and (word2 == '' or not word2):
+        return (None, None, 0)
+
+    if word1 == '' or not word1:
+        syn = synset(word2)
+        return (None, syn, 0)
+    
+    if word2 == '' or not word2:
+        syn = synset(word1)
+        return (syn, None, 0)
+
+    if word1 == word2:
+        syn = synset(word1)
+        return (syn, syn, 1)
+
+    syns_word1 = wn.synsets(word1)
+    syns_word2 = wn.synsets(word2)
+
+    syns_score = [(x,y,x.path_similarity(y)) for x in syns_word1 for y in syns_word2]
+
+    sorted_syns = sorted(syns_score, key=lambda x: x[2], reverse=True)
+    return sorted_syns[0]
+
+def synset(word):
+    try:
+        return wn.synsets(word)[0]
+    except IndexError:
+        return None

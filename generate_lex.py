@@ -1,4 +1,4 @@
-import argparse, os
+import argparse, os, re
 
 from pattern.en import (pluralize, verbs, 
     PRESENT, SINGULAR, PLURAL)
@@ -12,8 +12,16 @@ def wn_browse(pos, action):
     for i in wn.all_synsets(pos):
         action(i)
 
+def sanitize(word):
+    word = word.replace("-", "_")
+    word = word.replace("'", "_qt_")
+    word = word.replace("/", "_")
+    word = re.sub("[0-9]", "_", word)
+    return word
+
 def synset_name(synset):
-    return synset.name.split(".")[0]
+    name = synset.name.split(".")[0]
+    return name
 
 def print_tag(synset):
     print synset_name(synset)
@@ -26,18 +34,18 @@ def gen_nouns(args):
 
     def print_plural(synset):
         value = {}
-        value['plural'] = pluralize(synset_name(synset))
+        value['plural'] = sanitize(pluralize(synset_name(synset)))
         print template.render({'value': value})
 
     def print_singular(synset):
         value = {}
-        value['singular'] = synset_name(synset)
+        value['singular'] = sanitize(synset_name(synset))
         print template.render({'value': value})
 
     def print_combined(synset):
         value = {}
-        value['singular'] = synset_name(synset)
-        value['plural'] = pluralize(synset_name(synset))
+        value['singular'] = sanitize(synset_name(synset))
+        value['plural'] = sanitize(pluralize(synset_name(synset)))
         print template.render({'value': value})
 
     if args.plural:
@@ -59,21 +67,44 @@ def gen_verbs(args):
         for tense in verbs.TENSES:
             con = verbs.conjugate(verb, tense)
             if con:
-                value['actual'] = con
+                value['actual'] = sanitize(con)
                 value['time'] = tense[0]
                 value['pov'] = tense[1]
                 value['num'] = tense[2]
                 value['dir'] = tense[3]
                 value['prog'] = tense[4]
+                value['original'] = sanitize(verb)
                 print template.render({'value': value})
 
     wn_browse('v', print_template)
 
 def gen_adjs(args):
-    wn_browse('a', print_tag)
+    template = Template("{{ value }}")
+    
+    if args.template:
+        template = jinja_env.get_template(args.template)
+
+    def print_template(synset):
+        value = {}
+        value['actual'] = sanitize(synset_name(synset))
+        if value['actual'] != '':
+            print template.render({'value': value})
+
+    wn_browse('a', print_template)
 
 def gen_advs(args):
-    wn_browse('r', print_tag) 
+    template = Template("{{ value }}")
+
+    if args.template:
+        template = jinja_env.get_template(args.template)
+
+    def print_template(synset):
+        value = {}
+        value['actual'] = sanitize(synset_name(synset))
+        if value['actual'] != '':
+            print template.render({'value': value})
+
+    wn_browse('r', print_template) 
 
 def main():
     parser = argparse.ArgumentParser()
@@ -101,10 +132,14 @@ def main():
     
     parser_adjs = subparsers.add_parser('adjs',
         help="generate adjectives")
+    parser_adjs.add_argument('-t', '--template',
+        help="tailor output to this template")
     parser_adjs.set_defaults(func=gen_adjs)
 
     parser_advs = subparsers.add_parser('advs',
         help="generate adverbs")
+    parser_advs.add_argument('-t', '--template',
+        help="tailor verb output to this template")
     parser_advs.set_defaults(func=gen_advs)
 
     args = parser.parse_args()
