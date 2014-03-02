@@ -1,5 +1,12 @@
+Jinja2==2.7.2
+MarkupSafe==0.18
+Pattern==2.6
+PyYAML==3.10
 argparse==1.2.1
+backports.ssl-match-hostname==3.4.0.2
+distribute==0.6.34
 nltk==2.0.4
 nose==1.3.0
-pattern==2.6
-jinja2==2.7.2
+sockjs-tornado==1.0.0
+tornado==3.2
+wsgiref==0.1.2
