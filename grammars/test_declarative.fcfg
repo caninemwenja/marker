@@ -1,15 +1,5 @@
-Declarative -> Subject Predicate
-
-Noun -> 'name'
-Noun[NUM=pl] -> 'sentences'
-
-Proper_Noun -> 'Mary'
-
-Adjective -> 'declarative'
-
-Vinf -> 'form'
-
-V3s -> 'used'
+Declarative[SUBJECT=?sub, PREDICATE=?pred, OBJECT=?obj] -> Subject[SUBJECT=?sub] Predicate[PREDICATE=?pred, OBJECT=?obj]
 
 ref grammars/test_subject.fcfg
 ref grammars/test_predicate.fcfg
+ref grammars/test_sample_lex.fcfg

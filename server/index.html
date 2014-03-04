@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Free Text Marker by K. Mwenja</title>
+        <link rel="stylesheet" href="/static/style.css">
+        <script src="/static/jquery-1.8.3.min.js"></script>
+        <script src="/static/sockjs-0.3.min.js"></script>
+        <script>
+            $(function(){
+                var conn = null;
+
+                function log(msg){
+                    console.log(msg);
+                };
+
+                function connect(){
+                    var transports = ['websocket', 'xhr-polling', 'jsonp-polling'];
+
+                    conn = new SockJS('http://'+window.location.host+'/message', transports);
+
+                    log("Connecting");
+
+                    conn.onopen =function(){
+                        log("Opened");
+                    };
+
+                    conn.onclose = function(){
+                        log("Closed");
+                    };
+
+                    conn.onmessage = function(e){
+                        log("From server: "+e.data);
+                        var response = JSON.parse(e.data);
+                        $("#score").html(response.score);
+                        $("#sub1").html(response.subs[0].name +": "+response.subs[0].def);
+                        $("#sub2").html(response.subs[1].name +": "+response.subs[1].def);
+                        $("#pred1").html(response.preds[0].name +": "+response.preds[0].def);
+                        $("#pred2").html(response.preds[1].name +": "+response.preds[1].def);
+                        $("#obj1").html(response.objs[0].name +": "+response.objs[0].def);
+                        $("#obj2").html(response.objs[1].name +": "+response.objs[1].def);
+
+                        $("#pred_score").html(response.pred_score);
+                        $("#sub_score").html(response.sub_score);
+                        $("#obj_score").html(response.obj_score);
+
+                        $("#message").html("Received");
+                    };
+
+                }
+
+                $("#submit_btn").click(function(event){
+                    event.preventDefault();
+
+                    var teacher = $(":input[name='teacher']").val();
+                    var student = $(":input[name='student']").val();
+                    request = { "teacher": teacher, "student": student };
+                    $("#message").html("Sending...");
+                    conn.send(JSON.stringify(request));
+                });
+
+                connect();
+            });
+        </script>
+    </head>
+    <body>
+        <h1>Free Text Marker</h1>
+        <p id="message"></p>
+        <div>
+            <label for="question">Question</label>
+            <br>
+            <input type="text" name="question" placeholder="Enter question here"/>
+            <br>
+            <label for="teacher">Teacher's answer</label>
+            <br>
+            <input type="text" name="teacher" placeholder="Enter correct answer here"/>
+            <br>
+            <label for="student">Student's answer</label>
+            <br>
+            <input type="text" name="student" placeholder="Attempt to answer here"/>
+            <br>
+            <button id="submit_btn">Try</button>
+        </div>
+        <div id="results">
+            <p>Overall Score: <span id="score"></span></p>
+            <p>Subjects: <span class="phrase" id="sub1"></span> vs <span class="phrase" id="sub2"></span> Score: <span class="score" id="sub_score"></span></p>
+            <p>Predicates: <span class="phrase" id="pred1"></span> vs <span class="phrase" id="pred2"></span> Score: <span class="score" id="pred_score"></span></p>
+            <p>Objects: <span class="phrase" id="obj1"></span> vs <span class="phrase" id="obj2"></span> Score: <span id="obj_score" class="score"></span></p>
+        </div>
+    </body>
+</html>

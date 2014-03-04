@@ -1,0 +1,5 @@
+ref grammars/noun.lex.fcfg
+ref grammars/verb.lex.fcfg
+ref grammars/prep.lex.fcfg
+ref grammars/adjective.lex.fcfg
+ref grammars/adverb.lex.fcfg

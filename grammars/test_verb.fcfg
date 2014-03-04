@@ -1,105 +1,55 @@
-Verb_Phrase -> Verb
+Verb_Phrase[PREDICATE=?p] -> Verb[PREDICATE=?p]
 
-Verb -> V1s | V2s | V3s | V1p | V2p | V3p | Vpast | Linking_Verb
+Verb[PREDICATE=?p] -> V1s[PREDICATE=?p] | V2s[PREDICATE=?p] | V3s[PREDICATE=?p] | V1p[PREDICATE=?p] | V2p[PREDICATE=?p] | V3p[PREDICATE=?p] | Vpast[PREDICATE=?p] | Linking_Verb[PREDICATE=?p]
 
-Verb_Phrase -> Have Vpastp
-Verb_Phrase -> Have Not Vpastp
+Verb_Phrase[PREDICATE=?p] -> Have Vpastp[PREDICATE=?p]
+Verb_Phrase[PREDICATE=?p] -> Have Not Vpastp[PREDICATE=?p]
 
-Verb_Phrase -> Have Been Vpastp_or_Ving
-Verb_Phrase -> Have Not Been Vpastp_or_Ving
-Vpastp_or_Ving -> Vpastp
-Vpastp_or_Ving -> Ving
+Verb_Phrase[PREDICATE=?p] -> Have Been Vpastp_or_Ving[PREDICATE=?p]
+Verb_Phrase[PREDICATE=?p] -> Have Not Been Vpastp_or_Ving[PREDICATE=?p]
 
-Verb_Phrase -> AuxV Have[TIME=3] Vpastp
-Verb_Phrase -> AuxV Not Have[TIME=3] Vpastp
+Vpastp_or_Ving[PREDICATE=?p] -> Vpastp[PREDICATE=?p]
+Vpastp_or_Ving[PREDICATE=?p] -> Ving[PREDICATE=?p]
 
-Verb_Phrase -> AuxV Have[TIME=3] Been Vpastp_or_Ving
-Verb_Phrase -> AuxV Not Have[TIME=3] Been Vpastp_or_Ving
+Verb_Phrase[PREDICATE=?p] -> AuxV Have[TIME=3] Vpastp[PREDICATE=?p]
+Verb_Phrase[PREDICATE=?p] -> AuxV Not Have[TIME=3] Vpastp[PREDICATE=?p]
 
-Verb_Phrase -> AuxV Be Vpastp_or_Ving
-Verb_Phrase -> AuxV Not Be Vpastp_or_Ving
+Verb_Phrase[PREDICATE=?p] -> AuxV Have[TIME=3] Been Vpastp_or_Ving[PREDICATE=?p]
+Verb_Phrase[PREDICATE=?p] -> AuxV Not Have[TIME=3] Been Vpastp_or_Ving[PREDICATE=?p]
 
-Verb_Phrase -> AuxV Vinf
-Verb_Phrase -> AuxV Not Vinf
+Verb_Phrase[PREDICATE=?p] -> AuxV Be Vpastp_or_Ving[PREDICATE=?p]
+Verb_Phrase[PREDICATE=?p] -> AuxV Not Be Vpastp_or_Ving[PREDICATE=?p]
 
-Verb_Phrase -> Ought To_or_Not Vinf
+Verb_Phrase[PREDICATE=?p] -> AuxV Vinf[PREDICATE=?p]
+Verb_Phrase[PREDICATE=?p] -> AuxV Not Vinf[PREDICATE=?p]
+
+Verb_Phrase[PREDICATE=?p] -> Ought To_or_Not Vinf[PREDICATE=?p]
 
 To_or_Not -> To
 To_or_Not -> Not
 
-Verb_Phrase -> Ought To_or_Not Be Vpastp_or_Ving
+Verb_Phrase[PREDICATE=?p] -> Ought To_or_Not Be Vpastp_or_Ving[PREDICATE=?p]
 
-Verb_Phrase -> Ought To_or_Not Have[TIME=3] Vpastp
+Verb_Phrase[PREDICATE=?p] -> Ought To_or_Not Have[TIME=3] Vpast[PREDICATE=?p]
 
-Verb_Phrase -> Ought To_or_Not Have[TIME=3] Been Vpastp_or_Ving
+Verb_Phrase[PREDICATE=?p] -> Ought To_or_Not Have[TIME=3] Been Vpastp_or_Ving[PREDICATE=?p]
 
-Verb_Phrase -> Do
-Verb_Phrase -> Do Not
-Verb_Phrase -> Do Vinf
-Verb_Phrase -> Do Not Vinf
+Verb_Phrase[PREDICATE=?p] -> Do
+Verb_Phrase[PREDICATE=?p] -> Do Not
+Verb_Phrase[PREDICATE=?p] -> Do Vinf[PREDICATE=?p]
+Verb_Phrase[PREDICATE=?p] -> Do Not Vinf[PREDICATE=?p]
 
-Verb_Phrase -> Is Vpastp_or_Ving
-Verb_Phrase -> Is Not Vpastp_or_Ving
+Verb_Phrase[PREDICATE=?p] -> Is Vpastp_or_Ving[PREDICATE=?p]
+Verb_Phrase[PREDICATE=?p] -> Is Not Vpastp_or_Ving[PREDICATE=?p]
 
-Verb_Phrase -> Is Being
-Verb_Phrase -> Is Not Being
-Verb_Phrase -> Is Being Vpastp
-Verb_Phrase -> Is Not Being Vpastp
+Verb_Phrase[PREDICATE=?p] -> Is Being
+Verb_Phrase[PREDICATE=?p] -> Is Not Being
+Verb_Phrase[PREDICATE=?p] -> Is Being Vpastp[PREDICATE=?p]
+Verb_Phrase[PREDICATE=?p] -> Is Not Being Vpastp[PREDICATE=?p]
 
-Verb_Phrase -> Is Going To Vinf
-Verb_Phrase -> Is Going To
-Verb_Phrase -> Is Not Going To Vinf
-Verb_Phraes -> Is Not Going To
+Verb_Phrase[PREDICATE=?p] -> Is Going To Vinf[PREDICATE=?p]
+Verb_Phrase[PREDICATE=?p] -> Is Going To
+Verb_Phrase[PREDICATE=?p] -> Is Not Going To Vinf[PREDICATE=?p]
+Verb_Phrase -> Is Not Going To
 
-Have[TIME=1] -> 'had'
-Have[TIME=2] -> 'has'
-Have[TIME=3] -> 'have'
-
-Is -> 'am' | 'are' | 'is' | 'was' | 'were'
-
-Do -> 'do' | 'does' | 'did'
-
-Been -> 'been'
-
-Be -> 'be'
-
-Being -> 'being'
-
-Not -> 'not'
-
-To -> 'to'
-
-Ought -> 'ought'
-
-Going -> 'going'
-
-V1s -> 'start' | 'walk'
-
-V2s -> 'start' | 'walk'
-
-V3s -> 'starts' | 'walks'
-
-V1p -> 'start' | 'walk'
-
-V2p -> 'start' | 'walk'
-
-V3p -> 'start' | 'walk'
-
-Vpast -> 'started' | 'walked'
-
-Vpastp -> 'gone' | 'finished' | 'studied' | 'done' | 'punished' | 'used'
-
-Ving -> 'studying' | 'drinking' | 'swimming' | 'eating'
-
-Vinf -> 'go' | 'eat' | 'study' | 'drink' | 'swim' | 'travel'
-
-Linking_Verb -> Is
-Linking_Verb -> Look
-Linking_Verb -> Become
-
-Look -> 'look' | 'looks' | 'looked' 
-Become -> 'become' | 'became' | 'become'
-
-AuxV -> 'must' | 'may' |'might' | 'will' |'would' |'shall' | 'should' |'can' |'could'
-
-
+ref grammars/test_sample_lex.fcfg
