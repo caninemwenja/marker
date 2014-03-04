@@ -11,7 +11,7 @@ import utils
 
 logging.getLogger().setLevel(logging.DEBUG)
 
-logging.debug("Loading grammar...")
+logging.info("Loading grammar...")
 grammar = parser_tool.load_grammar('grammars/declarative.fcfg', cache=True)
 
 def relation_extraction(sentence):
@@ -86,7 +86,7 @@ class IndexHandler(tornado.web.RequestHandler):
     def get(self):
         self.render('index.html')
 
-class EchoServer(sockjs.tornado.SockJSConnection):
+class GrammarServer(sockjs.tornado.SockJSConnection):
 
     def on_open(self, info):
         logging.debug("Joined: %s" % repr(info))
@@ -116,11 +116,11 @@ class EchoServer(sockjs.tornado.SockJSConnection):
         logging.debug("Closed")
 
 if __name__ == "__main__":
-    logging.debug("Grammar loaded.")
+    logging.info("Grammar loaded.")
 
-    logging.debug("Starting Server...")
+    logging.info("Starting Server...")
 
-    EchoRouter = sockjs.tornado.SockJSRouter(EchoServer, "/message")
+    GrammarRouter = sockjs.tornado.SockJSRouter(GrammarServer, "/message")
 
     settings = {
         'debug': True,
@@ -132,12 +132,16 @@ if __name__ == "__main__":
         (r"/static/(.*)", tornado.web.StaticFileHandler),
     ]
 
-    handlers += EchoRouter.urls
+    handlers += GrammarRouter.urls
 
     app = tornado.web.Application(handlers, **settings)
-
+    
     app.listen(8080)
+    
+    logging.info("Listening...")
 
-    logging.debug("Listening...")
-
-    tornado.ioloop.IOLoop.instance().start()
+    try:
+        tornado.ioloop.IOLoop.instance().start()
+    except KeyboardInterrupt:
+        tornado.ioloop.IOLoop.instance().stop()
+        logging.info("Bye!")
