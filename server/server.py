@@ -9,6 +9,8 @@ import parser_tool
 import json
 import utils
 
+import parser_tool, utils
+
 logging.getLogger().setLevel(logging.DEBUG)
 
 logging.info("Loading grammar...")

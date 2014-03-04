@@ -1,5 +1,5 @@
-from parser_tool import parse, get_parser
-from utils import go_over_file
+from ..parser_tool import parse, get_parser
+from ..utils import go_over_file
 
 class GrammarTest(object):
     

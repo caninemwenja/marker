@@ -1,7 +1,8 @@
 import os
 
-from utils import parse_file, get_file_content
 from nose import with_setup
+
+from ..utils import parse_file, get_file_content
 
 test_files = {
     'test1.txt': "some junk\nref test2.txt",
